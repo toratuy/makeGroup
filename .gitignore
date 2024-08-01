@@ -1,2 +1,3 @@
 .makeGroup
 __pycache__
+data/class.csv
