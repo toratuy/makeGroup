@@ -10,26 +10,14 @@ with col1:
 
     st.title("Créer une nouvelle classe")
 
-    reset_btn = st.button("Supprimer la class en passée")
-    if reset_btn:
-        # delete the csv of the past class
-        if os.path.isfile("./data/class.csv") == True:
-            os.remove("./data/class.csv")
-        st.text("La dernière classe a été supprimée")
-
-    # read or make dataframe
-    if os.path.isfile("./data/class.csv") == True:
-        df = pd.read_csv("./data/class.csv", usecols=["NOM", "LANGUE"])
-
-    else:
-        df = pd.DataFrame([{"NOM": "AJOUTER NOM ICI", "LANGUE": "AJOUTER LANGUE ICI"}])
+    # make dataframe
+    df = pd.DataFrame([{"NOM": "AJOUTER NOM ICI", "LANGUE": "AJOUTER LANGUE ICI"}])
     df = st.data_editor(df, num_rows="dynamic") # make df as an editable df
 
-    finish_btn = st.button("Sauvegarder")
-    if finish_btn:
-        if os.path.isfile("./data/class.csv") == True:
-            os.remove("./data/class.csv")
-        df.to_csv("./data/class.csv")
+    reset_btn = st.button("Supprimer la class")
+    if reset_btn:
+        # delete the csv of the past class
+        df = pd.DataFrame([{"NOM": "AJOUTER NOM ICI", "LANGUE": "AJOUTER LANGUE ICI"}])
 
 with col2:
     st.title("Faire des groupes des langues differentes")
